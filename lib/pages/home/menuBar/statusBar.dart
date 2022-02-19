@@ -1,8 +1,10 @@
 // ignore_for_file: file_names
 
+import 'package:page_transition/page_transition.dart';
 import 'package:flutter/material.dart';
 import 'package:mobicar/constants/colors.dart';
 import 'package:mobicar/constants/icons.dart';
+import 'package:mobicar/pages/home/menuBar/buttonMenu.dart';
 
 class StatusBar extends StatelessWidget {
   const StatusBar({Key? key}) : super(key: key);
@@ -11,15 +13,17 @@ class StatusBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return AppBar(
       actions: [
-        SizedBox(
-          width: 100,
-          height: 100,
-          child: Image.asset(
-            iconMenu,
-            width: 100,
-            height: 100,
-          ),
-        )
+        IconButton(
+          splashColor: Colors.transparent,
+          onPressed: () => Navigator.push(
+              context,
+              PageTransition(
+                  duration: Duration(milliseconds: 300),
+                  type: PageTransitionType.rightToLeft,
+                  child: const ButtonMenu())),
+          icon:
+              Image.asset(iconMenu, width: 25, height: 25, fit: BoxFit.contain),
+        ),
       ],
       backgroundColor: Colors.black,
       title: Column(

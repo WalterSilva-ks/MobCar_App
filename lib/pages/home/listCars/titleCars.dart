@@ -1,6 +1,7 @@
 // ignore_for_file: file_names, avoid_unnecessary_containers
 
 import 'package:flutter/material.dart';
+import 'package:mobicar/pages/home/listCars/addNewCar.dart';
 import 'package:mobicar/pages/home/listCars/cars.dart';
 
 class TitleCars extends StatelessWidget {
@@ -43,7 +44,14 @@ class TitleCars extends StatelessWidget {
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(8)),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return const AddNewCar();
+                        },
+                      );
+                    },
                     child: const Text(
                       "Add new",
                     ),

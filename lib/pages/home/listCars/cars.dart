@@ -1,7 +1,11 @@
 // ignore_for_file: avoid_print
 
 import 'package:flutter/material.dart';
+
 import 'package:mobicar/constants/colors.dart';
+import 'package:mobicar/pages/home/listCars/viewCar.dart';
+
+import 'addNewCar.dart';
 
 class Cars extends StatelessWidget {
   const Cars({Key? key}) : super(key: key);
@@ -11,7 +15,6 @@ class Cars extends StatelessWidget {
     return Expanded(
       flex: 1,
       child: ListView.builder(
-        padding: EdgeInsets.symmetric(horizontal: 5),
         itemCount: 100,
         itemBuilder: (BuildContext context, index) {
           return ElevatedButton(
@@ -101,7 +104,12 @@ class Cars extends StatelessWidget {
                             padding: EdgeInsets.zero,
                             alignment: Alignment.centerLeft),
                         onPressed: () {
-                          print("view tocada");
+                          showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return const ViewCar();
+                            },
+                          );
                         },
                         child: const Text(
                           'View More',
@@ -123,12 +131,30 @@ class Cars extends StatelessWidget {
                     ),
                     itemBuilder: (context) => [
                       PopupMenuItem(
-                        onTap: () {},
+                        onTap: () {
+                          Future.delayed(const Duration(milliseconds: 280), () {
+                            showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return const ViewCar();
+                              },
+                            );
+                          });
+                        },
                         child: const Text("View"),
                         value: 1,
                       ),
                       PopupMenuItem(
-                        onTap: () {},
+                        onTap: () {
+                          Future.delayed(const Duration(milliseconds: 280), () {
+                            showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return const AddNewCar();
+                              },
+                            );
+                          });
+                        },
                         child: const Text("Edit"),
                         value: 2,
                       ),
